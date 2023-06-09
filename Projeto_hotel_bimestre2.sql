@@ -12,6 +12,10 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
+-- QUESTÃO 1
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
 -- Table `hotel`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hotel` (
@@ -189,3 +193,32 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+
+
+-- -----------------------------------------------------
+-- QUESTÃO 2
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Table `funcionario`
+-- -----------------------------------------------------
+INSERT INTO `myTable` (`cpf_func`,`primeiro_nome`,`ultimo_nome`,`data_nascimento`,`sexo`,`salário`,`celular`,`email`)
+VALUES
+  ("10166085458","Buffy","Cunningham","24/10/1993","H","63 365","(46)25348-9954","buffy6799@hotmail.com"),
+  ("34632625534","Melissa","Hartman","18/07/1991","H","32 396","(67)72234-1806","melissa750@icloud.com"),
+  ("51226637949","Tasha","Mccall","08/12/1985","M","68 530","(33)41136-3928","tasha@hotmail.com"),
+  ("21553585256","Benjamin","Knowles","10/04/1977","M","2 766","(49)77561-1221","benjamin@hotmail.com"),
+  ("73288326247","Prescott","Owens","01/11/1970","H","81 896","(65)54623-8295","prescott@google.com"),
+  ("94939874225","Xyla","Rasmussen","03/09/1973","H","76 697","(97)74442-4364","xyla2971@icloud.com"),
+  ("40571813886","Kevyn","Holt","19/10/1990","H","23 779","(38)76954-3559","kevyn6907@icloud.com"),
+  ("34283570181","Hashim","Pate","16/06/1980","M","75 235","(58)48076-2013","hashim@icloud.com"),
+  ("61765680788","Fleur","Randolph","30/08/1975","M","23 780","(31)31514-7805","fleur@outlook.com"),
+  ("17481213950","Lyle","Tyson","16/02/1989","H","77 787","(54)81759-7162","lyle@hotmail.com"),
+  ("18792978824","Channing","Melton","24/03/1982","H","40 568","(68)54897-6653","channing4483@google.com"),
+  ("11112753173","Kirby","Cohen","14/07/1993","H","80 654","(82)48932-5123","kirby@outlook.com"),
+  ("21545262462","Gwendolyn","Wilcox","04/09/1999","M","44 308","(26)47885-7853","gwendolyn345@hotmail.com"),
+  ("48468543335","Anthony","Dunlap","30/03/1987","M","9 086","(93)45913-4594","anthony@outlook.com"),
+  ("53908381126","Seth","Harmon","10/09/1979","H","70 655","(70)26668-2699","seth1741@google.com");
