@@ -205,7 +205,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 -- Table `funcionario`
 -- -----------------------------------------------------
-INSERT INTO `myTable` (`cpf_func`,`primeiro_nome`,`ultimo_nome`,`data_nascimento`,`sexo`,`salário`,`celular`,`email`)
+INSERT INTO `funcionario` (`cpf_func`,`primeiro_nome`,`ultimo_nome`,`data_nascimento`,`sexo`,`salário`,`celular`,`email`)
 VALUES
   ("10166085458","Buffy","Cunningham","24/10/1993","H","63 365","(46)25348-9954","buffy6799@hotmail.com"),
   ("34632625534","Melissa","Hartman","18/07/1991","H","32 396","(67)72234-1806","melissa750@icloud.com"),
