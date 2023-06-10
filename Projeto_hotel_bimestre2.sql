@@ -205,7 +205,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 -- Insert Table `hotel`
 -- -----------------------------------------------------
-INSERT INTO `hotel` (`id_hotel`,`name`,`endereco`,`cidade`,`quantidade_quartos`,`telefone`,`numberrange1`)
+INSERT INTO `hotel` (`id_hotel`,`hotel_nome`,`endereco`,`cidade`,`quantidade_quartos`,`telefone`,`estrelas`)
 VALUES
   (0,"Topo da Montanha","939-1678 A, Road","Vitória",27,"(27)99512-8548",5),
   (1,"Canto da Areia","P.O. Box 680, 6315 Arcu. Ave","Vila Velha",21,"(27)99684-9735",4),
