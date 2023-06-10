@@ -102,7 +102,7 @@ ENGINE = InnoDB;
 -- Table `quarto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `quarto` (
-  `numero_quarto` INT NOT NULL AUTO_INCREMENT,
+  `numero_quarto` INT NOT NULL,
   `hotel_id` INT NULL,
   `disponibilidade` CHAR(1) NOT NULL,
   `tipo_quarto_id` INT NOT NULL,
@@ -263,28 +263,28 @@ VALUES
 -- -----------------------------------------------------
 -- Insert Table `dependentes`
 -- -----------------------------------------------------
-INSERT IGNORE INTO `dependentes` (`cpf`,`funcionario_cpf`,`primeiro_nome`,`ultimo_nome`,`parentesco`,`sexo`,`data_nascimento`)
+INSERT INTO `dependentes` (`cpf`,`funcionario_cpf`,`primeiro_nome`,`ultimo_nome`,`parentesco`,`sexo`,`data_nascimento`)
 VALUES
-  (97770289033,74013193060,"Kenneth Dixon","Wade","Filho","F","2004-10-03"),
-  (38192726070,74013193060,"Emi House","Patience","Filho","F","2010-01-04"),
-  (31129118061,32074964072,"Amela Velez","Xander","Filho","F","2002-09-01"),
-  (11185990046,08735675012,"Randall Robinson","Clarke","Filho(a)","M","2010-03-22"),
-  (58920624062,08735675012,"Timon Workman","Quin","Filho(a)","M","2012-12-04"),
-  (42961281083,47165234039,"Aaron Meyers","Simon","Filho(a)","M","1984-11-13"),
-  (90944228089,22619399068,"Hillary Jennings","Celeste","Filho(a)","F","2021-06-15"),
-  (64992854044,22619399068,"Portia Calhoun","Sonia","Filho(a)","F","1986-01-20"),
-  (34877595007,22619399068,"Jarrod Clayton","Lester","Filho(a)","M","1990-02-20"),
-  (93433066019,38601549071,"Dolan Benton","Wylie","Filho(a)","M","2014-09-13"),
-  (70815634064,75631257017,"Howard Gonzalez","Jermaine","Filho(a)","M","2005-04-10"),
-  (00332024008,75631257017,"Lawrence Booker","Ahmed","Filho(a)","M","1987-09-14"),
-  (77440773004,95336839027,"Karen Norris","Samuel","Filho(a)","F","1995-07-15"),
-  (18570350031,95336839027,"Kevyn Chandler","Naida","Filho(a)","F","1985-06-14"),
-  (80939057077,53256349099,"Wing Cervantes","Zephania","Filho(a)","M","2020-04-14"),
-  (58823292050,50428588069,"Alexa Donaldson","Erich","Filho(a)","F","2015-05-09"),
-  (36683287066,50428588069,"Hector Brady","Liberty","Filho(a)","M","2002-09-05"),
-  (01478390093,33715162023,"Adam Pennington","Celeste","Filho(a)","M","2001-11-13"),
-  (41367467098,96345235016,"Portia Greene","Brynn","Filho(a)","F","2011-12-29"),
-  (33813703088,96345235016,"Bevis Pearson","Genevieve","Filho(a)","M","2005-01-08");
+  (97770289033,74013193060,"Kenneth","Wade","Filho(a)","F","2004-10-03"),
+  (38192726070,74013193060,"Emi","Patience","Filho(a)","F","2010-01-04"),
+  (31129118061,32074964072,"Amela","Xander","Filho(a)","F","2002-09-01"),
+  (11185990046,08735675012,"Randall","Clarke","Filho(a)","M","2010-03-22"),
+  (58920624062,08735675012,"Timon","Quin","Filho(a)","M","2012-12-04"),
+  (42961281083,47165234039,"Aaron","Simon","Filho(a)","M","1984-11-13"),
+  (90944228089,22619399068,"Hillary","Celeste","Filho(a)","F","2021-06-15"),
+  (64992854044,22619399068,"Portia","Sonia","Filho(a)","F","1986-01-20"),
+  (34877595007,22619399068,"Jarrod","Lester","Filho(a)","M","1990-02-20"),
+  (93433066019,38601549071,"Dolan","Wylie","Filho(a)","M","2014-09-13"),
+  (70815634064,75631257017,"Howard","Jermaine","Filho(a)","M","2005-04-10"),
+  (00332024008,75631257017,"Lawrence","Ahmed","Filho(a)","M","1987-09-14"),
+  (77440773004,95336839027,"Karen","Samuel","Filho(a)","F","1995-07-15"),
+  (18570350031,95336839027,"Kevyn","Naida","Filho(a)","F","1985-06-14"),
+  (80939057077,53256349099,"Wing","Zephania","Filho(a)","M","2020-04-14"),
+  (58823292050,50428588069,"Alexa","Erich","Filho(a)","F","2015-05-09"),
+  (36683287066,50428588069,"Hector","Liberty","Filho(a)","M","2002-09-05"),
+  (01478390093,33715162023,"Adam","Celeste","Filho(a)","M","2001-11-13"),
+  (41367467098,96345235016,"Portia","Brynn","Filho(a)","F","2011-12-29"),
+  (33813703088,96345235016,"Bevis","Genevieve","Filho(a)","M","2005-01-08");
   
 -- -----------------------------------------------------
 -- Insert Table `tipo_quarto`
@@ -299,36 +299,33 @@ VALUES
 -- -----------------------------------------------------
 -- Insert Table `quarto`
 -- -----------------------------------------------------
-INSERT INTO `quarto` (`hotel_id`,`disponibilidade`,`tipo_quarto_id`)
+INSERT INTO `quarto` (`numero_quarto`,`hotel_id`,`disponibilidade`,`tipo_quarto_id`)
 VALUES
-	(1,"S",1),
-    (1,"N",1),
-    (1,"S",2),
-    (1,"S",2),
-    (1,"N",2),
-    (1,"N",3),
-    (1,"S",3),
-    (1,"N",3),
-    (1,"S",4),
-    (1,"S",4),
-    (2,"N",1),
-    (2,"N",1),
-    (2,"S",2),
-    (2,"S",2),
-    (2,"N",2),
-    (2,"N",2),
-    (2,"N",3),
-    (2,"S",3),
-    (2,"S",3),
-    (2,"S",4),
-    (3,"N",1),
-    (3,"N",1),
-    (3,"N",2),
-    (3,"N",2),
-    (3,"S",3),
-    (3,"S",3),
-    (3,"S",3),
-    (3,"N",4),
-    (3,"S",4),
-    (3,"N",4);
+	(11,1,"S",1),
+    (12,1,"N",1),
+    (13,1,"S",2),
+    (21,1,"S",2),
+    (22,1,"N",2),
+    (23,1,"N",3),
+    (31,1,"S",3),
+    (32,1,"N",3),
+    (33,1,"S",4),
+    (11,2,"N",1),
+    (12,2,"N",1),
+    (13,2,"S",2),
+    (21,2,"S",2),
+    (22,2,"N",2),
+    (23,2,"N",2),
+    (31,2,"N",3),
+    (32,2,"S",3),
+    (33,2,"S",4),
+    (11,3,"N",1),
+    (12,3,"N",1),
+    (13,3,"N",2),
+    (21,3,"N",2),
+    (22,3,"S",3),
+    (23,3,"S",3),
+    (31,3,"S",3),
+    (32,3,"N",4),
+    (33,3,"S",4);
     
