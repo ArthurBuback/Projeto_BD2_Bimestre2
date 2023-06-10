@@ -203,22 +203,41 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Table `funcionario`
+-- Insert Table `hotel`
+-- -----------------------------------------------------
+INSERT INTO `hotel` (`id_hotel`,`name`,`endereco`,`cidade`,`quantidade_quartos`,`telefone`,`numberrange1`)
+VALUES
+  (0,"Topo da Montanha","939-1678 A, Road","Vitória",27,"(27)99512-8548",5),
+  (1,"Canto da Areia","P.O. Box 680, 6315 Arcu. Ave","Vila Velha",21,"(27)99684-9735",4),
+  (2,"A Grande Árvore","Ap #142-7472 Sed Avenue","Vila Velha",25,"(27)99871-7086",5);
+
+-- -----------------------------------------------------
+-- Insert Table `cargo`
+-- -----------------------------------------------------
+INSERT INTO `cargo` (`id_cargo`,`nome_cargo`)
+VALUES
+  (0,"Gerente"),
+  (1,"Arrumeiro"),
+  (2,"Cozinheiro"),
+  (3,"Balconista");
+
+-- -----------------------------------------------------
+-- Insert Table `funcionario`
 -- -----------------------------------------------------
 INSERT INTO `funcionario` (`cpf_func`,`primeiro_nome`,`ultimo_nome`,`data_nascimento`,`sexo`,`salário`,`celular`,`email`)
 VALUES
-  ("10166085458","Buffy","Cunningham","1993-10-24","H","63 365","(46)25348-9954","buffy6799@hotmail.com"),
-  ("34632625534","Melissa","Hartman","1991-07-18","H","32 396","(67)72234-1806","melissa750@icloud.com"),
-  ("51226637949","Tasha","Mccall","1985-12-08","M","68 530","(33)41136-3928","tasha@hotmail.com"),
-  ("21553585256","Benjamin","Knowles","1977-04-10","M","2 766","(49)77561-1221","benjamin@hotmail.com"),
-  ("73288326247","Prescott","Owens","1970-11-01","H","81 896","(65)54623-8295","prescott@google.com"),
-  ("94939874225","Xyla","Rasmussen","1973-09-03","H","76 697","(97)74442-4364","xyla2971@icloud.com"),
-  ("40571813886","Kevyn","Holt","1990-10-19","H","23 779","(38)76954-3559","kevyn6907@icloud.com"),
-  ("34283570181","Hashim","Pate","1980-06-16","M","75 235","(58)48076-2013","hashim@icloud.com"),
-  ("61765680788","Fleur","Randolph","1975-08-30","M","23 780","(31)31514-7805","fleur@outlook.com"),
-  ("17481213950","Lyle","Tyson","1989-02-16","H","77 787","(54)81759-7162","lyle@hotmail.com"),
-  ("18792978824","Channing","Melton","1982-03-24","H","40 568","(68)54897-6653","channing4483@google.com"),
-  ("11112753173","Kirby","Cohen","1993-07-14","H","80 654","(82)48932-5123","kirby@outlook.com"),
-  ("21545262462","Gwendolyn","Wilcox","1999-09-04","M","44 308","(26)47885-7853","gwendolyn345@hotmail.com"),
-  ("48468543335","Anthony","Dunlap","1987-03-30","M","9 086","(93)45913-4594","anthony@outlook.com"),
-  ("53908381126","Seth","Harmon","1979-09-10","H","70 655","(70)26668-2699","seth1741@google.com");
+  (10166085458,"Buffy","Cunningham","1993-10-24","H","63 365","(46)25348-9954","buffy6799@hotmail.com"),
+  (34632625534,"Melissa","Hartman","1991-07-18","H","32 396","(67)72234-1806","melissa750@icloud.com"),
+  (51226637949,"Tasha","Mccall","1985-12-08","M","68 530","(33)41136-3928","tasha@hotmail.com"),
+  (21553585256,"Benjamin","Knowles","1977-04-10","M","2 766","(49)77561-1221","benjamin@hotmail.com"),
+  (73288326247,"Prescott","Owens","1970-11-01","H","81 896","(65)54623-8295","prescott@google.com"),
+  (94939874225,"Xyla","Rasmussen","1973-09-03","H","76 697","(97)74442-4364","xyla2971@icloud.com"),
+  (40571813886,"Kevyn","Holt","1990-10-19","H","23 779","(38)76954-3559","kevyn6907@icloud.com"),
+  (34283570181,"Hashim","Pate","1980-06-16","M","75 235","(58)48076-2013","hashim@icloud.com"),
+  (61765680788,"Fleur","Randolph","1975-08-30","M","23 780","(31)31514-7805","fleur@outlook.com"),
+  (17481213950,"Lyle","Tyson","1989-02-16","H","77 787","(54)81759-7162","lyle@hotmail.com"),
+  (18792978824,"Channing","Melton","1982-03-24","H","40 568","(68)54897-6653","channing4483@google.com"),
+  (11112753173,"Kirby","Cohen","1993-07-14","H","80 654","(82)48932-5123","kirby@outlook.com"),
+  (21545262462,"Gwendolyn","Wilcox","1999-09-04","M","44 308","(26)47885-7853","gwendolyn345@hotmail.com"),
+  (48468543335,"Anthony","Dunlap","1987-03-30","M","9 086","(93)45913-4594","anthony@outlook.com"),
+  (53908381126,"Seth","Harmon","1979-09-10","H","70 655","(70)26668-2699","seth1741@google.com");
