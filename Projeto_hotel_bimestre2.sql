@@ -474,3 +474,75 @@ ON acompanhante (ultimo_nome, primeiro_nome);
 
 CREATE INDEX hotel_nome_idx
 ON hotel (nome);
+
+
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- QUESTÃO 5
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Triggers para `acompanhente`
+-- -----------------------------------------------------
+CREATE TRIGGER acompanhante_cpf_trg BEFORE INSERT ON acompanhante
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.cpf < 0 OR NEW.cpf > 99999999999 THEN
+        SET msg = 'Insira um cpf de 11 dígitos';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+CREATE TRIGGER acompanhante_cliente_cpf_trg BEFORE INSERT ON acompanhante
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.cliente_cpf < 0 OR NEW.cliente_cpf > 99999999999 THEN
+        SET msg = 'Insira um cpf de 11 dígitos';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+CREATE TRIGGER relacionamento_trg BEFORE INSERT ON acompanhante
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.relacionamento <> 'Filho(a)' AND NEW.sexo <> 'Cônjuge' THEN
+        SET msg = 'O relacionamente deve ser apenas Filho(a) ou Cônjuge';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+CREATE TRIGGER acompanhante_sexo_trg BEFORE INSERT ON acompanhante
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.sexo <> 'F' AND NEW.sexo <> 'M' THEN
+        SET msg = 'O sexo deve ser masculino (M) ou feminino (F) apenas.';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+CREATE TRIGGER data_nascimento_trg BEFORE INSERT ON acompanhante
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.data_nascimento < '1960-01-01' AND NEW.data_nascimento > '2023-07-01' THEN
+        SET msg = 'Preencha com uma datá válida (entre 1960-01-01 e 2024-01-01';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+
+
+
+
+
