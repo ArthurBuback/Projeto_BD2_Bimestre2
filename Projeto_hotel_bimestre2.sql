@@ -471,3 +471,6 @@ on funcionario (ultimo_nome, primeiro_nome);
 
 CREATE INDEX acompanhante_primeiro_nome_ultimo_nome_idx
 ON acompanhante (ultimo_nome, primeiro_nome);
+
+CREATE INDEX hotel_nome_idx
+ON hotel (nome);
