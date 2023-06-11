@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `reserva` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `dia_reserva` DATE NULL,
   `dia_entrada` DATE NOT NULL,
-  `dia_saída` DATE NOT NULL,
+  `dia_saida` DATE NOT NULL,
   `cliente_cpf` BIGINT(11) NOT NULL,
   `valor_id` INT NOT NULL,
   `quarto_numero_quarto` INT NOT NULL,
@@ -374,7 +374,7 @@ VALUES
 -- -----------------------------------------------------
 -- Insert `reserva`
 -- -----------------------------------------------------
-INSERT INTO `reserva` (`dia_reserva`,`dia_entrada`,`dia_saída`,`cliente_cpf`,`valor_id`,`quarto_numero_quarto`,`quarto_hotel_id`)
+INSERT INTO `reserva` (`dia_reserva`,`dia_entrada`,`dia_saida`,`cliente_cpf`,`valor_id`,`quarto_numero_quarto`,`quarto_hotel_id`)
 VALUES
   ("2022-04-04","2022-06-06","2022-06-08",08558537003,4,32,3),
   ("2022-05-24","2022-05-30","2022-06-04",14349631011,5,11,2),
