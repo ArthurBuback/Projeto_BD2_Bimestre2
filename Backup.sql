@@ -212,6 +212,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 
+
+
+
+
+
+
 -- -----------------------------------------------------
 -- QUESTÃO 2
 -- -----------------------------------------------------
@@ -332,7 +338,7 @@ INSERT INTO `cliente` (`cpf`,`primeiro_nome`,`ultimo_nome`,`sexo`,`celular`,`ema
 VALUES
   (08558537003,"Constance","Nixon","M","26196-1641","c_nixon@outlook.com"),
   (14349631011,"Dai","Tate","M","83731-1158","d-tate6177@icloud.com"),
-  (66212317097,"Jocelyn","Pennington","F","51648-9352","pjocelyn3743@hotmail.com"),
+  (66212317097,"Jocelyn","Winters","F","51648-9352","pjocelyn3743@hotmail.com"),
   (87561694008,"Keely","Daniel","F","22556-4417","daniel-keely@outlook.com"),
   (29971420082,"Cruz","Lynch","M","76445-1374","cruz_lynch@outlook.com"),
   (71408479087,"Vernon","Joseph","M","53522-1878","josephvernon@icloud.com"),
@@ -341,8 +347,8 @@ VALUES
   (89651755008,"Lucy","Boyd","F","54385-3075","boyd-lucy@outlook.com"),
   (84570256007,"Jaime","White","M","52712-9816","white_jaime1265@google.com"),
   (82382463007,"Ezra","Koch","F","64703-6533","ezra_koch5898@yahoo.com"),
-  (15390964080,"Shana","Dalton","F","94729-1437","s-dalton7923@icloud.com"),
-  (85238997078,"Bianca","Hines","M","75007-5020","bianca-hines@hotmail.com"),
+  (15390964080,"Shana","Silva","F","94729-1437","s-dalton7923@icloud.com"),
+  (85238997078,"Bianca","Hines","F","75007-5020","bianca-hines@hotmail.com"),
   (02261830092,"Carlos","Piloto","M","96452-5438","carlos-piloto@hotmail.com");
 
 -- -----------------------------------------------------
@@ -390,26 +396,26 @@ VALUES
 -- -----------------------------------------------------
 INSERT INTO `acompanhante` (`cpf`,`cliente_cpf`,`primeiro_nome`,`ultimo_nome`,`relacionamento`,`sexo`,`data_nascimento`)
 VALUES
-  (08508465017,08558537003,"Eve","Marquez","Filho(a)","M","1992-09-08"),
-  (08889177080,08558537003,"TaShya","Nicholson","Filho(a)","M","2003-03-19"),
-  (96816182030,08558537003,"Lilah","Buckner","Cônjuge","F","2013-08-29"),
-  (67823953048,66212317097,"Tiger","Winters","Cônjuge","F","1994-12-12"),
-  (93759969054,87561694008,"Joel","Gordon","Filho(a)","M","1987-06-19"),
-  (70551078065,87561694008,"Colette","Padilla","Filho(a)","M","1997-06-19"),
-  (19563212096,29971420082,"Francesca","Kramer","Filho(a)","M","2003-05-19"),
-  (73007755000,29971420082,"Xaviera","Gould","Cônjuge","F","1999-10-28"),
-  (11455376000,71408479087,"Riley","Rojas","Cônjuge","F","1986-03-29"),
-  (47291283035,71408479087,"Candace","Stevens","Filho(a)","F","2004-05-12"),
-  (72458028071,46024072007,"Harley","Chaney","Filho(a)","F","2013-04-06"),
-  (71614573000,84570256007,"Connor","Waters","Filho(a)","M","2004-04-16"),
-  (10708331009,84570256007,"Orlando","Anderson","Cônjuge","F","2010-02-17"),
+  (08508465017,08558537003,"Eve","Nixon","Filho(a)","M","1992-09-08"),
+  (08889177080,08558537003,"TaShya","Nixon","Filho(a)","M","2003-03-19"),
+  (96816182030,08558537003,"Lilah","Nixon","Cônjuge","F","2013-08-29"),
+  (67823953048,66212317097,"Tiger","Winters","Cônjuge","M","1994-12-12"),
+  (93759969054,87561694008,"Joel","Daniel","Filho(a)","M","1987-06-19"),
+  (70551078065,87561694008,"Colette","Daniel","Filho(a)","F","1997-06-19"),
+  (19563212096,29971420082,"Francesca","Lynch","Filho(a)","M","2003-05-19"),
+  (73007755000,29971420082,"Xaviera","Lynch","Cônjuge","F","1999-10-28"),
+  (11455376000,71408479087,"Riley","Joseph","Cônjuge","F","1986-03-29"),
+  (47291283035,71408479087,"Candace","Joseph","Filho(a)","F","2004-05-12"),
+  (72458028071,46024072007,"Harley","Foster","Filho(a)","F","2013-04-06"),
+  (71614573000,84570256007,"Connor","Anderson","Filho(a)","M","2004-04-16"),
+  (10708331009,84570256007,"Orlando","Anderson","Cônjuge","M","2010-02-17"),
   (96778144009,85238997078,"Illana","Carpenter","Cônjuge","F","1989-06-19"),
-  (81134044062,85238997078,"Pascale","Pollard","Filho(a)","M","1994-12-08"),
-  (74781581021,15390964080,"Fredericka","Gray","Filho(a)","M","2003-12-29"),
-  (68311260060,15390964080,"Hakeem","Contreras","Filho(a)","M","1989-12-09"),
-  (63798194017,15390964080,"Kevyn","Silva","Cônjuge","F","1991-01-28"),
-  (22268554082,07626868048,"Heather","Mcdonald","Cônjuge","F","1996-11-02"),
-  (43122361000,07626868048,"Adam","Robinson","Filho(a)","M","1989-03-01");
+  (81134044062,85238997078,"Pascale","Hines","Filho(a)","M","1994-12-08"),
+  (74781581021,15390964080,"Fredericka","Silva","Filho(a)","M","2003-12-29"),
+  (68311260060,15390964080,"Hakeem","Silva","Filho(a)","M","1989-12-09"),
+  (63798194017,15390964080,"Kevyn","Silva","Cônjuge","M","1991-01-28"),
+  (22268554082,07626868048,"Heather","Williamson","Cônjuge","F","1996-11-02"),
+  (43122361000,07626868048,"Adam","Williamson","Filho(a)","M","1989-03-01");
 
 
 
@@ -443,3 +449,28 @@ SELECT CONCAT(C.primeiro_nome, ' ', C.ultimo_nome) 'Nome do Cliente',
 FROM cliente C INNER JOIN acompanhante A
 ON C.cpf = A.cliente_cpf
 ORDER BY C.primeiro_nome
+
+
+
+
+
+-- -----------------------------------------------------
+-- QUESTÃO 4
+-- -----------------------------------------------------
+/*Todas essas indexações são utilizadas para facilitar a realização de consultas, tornando mais facil a pesquisa de nomes 
+	respectivamentes dos clientes, dependentes, funcionarios e acompanhantes.*/
+
+CREATE INDEX cliente_primeiro_nome_ultimo_nome_idx
+ON cliente (ultimo_nome, primeiro_nome);
+
+CREATE INDEX dependentes_primeiro_nome_ultimo_nome_idx
+ON dependentes (ultimo_nome, primeiro_nome);
+
+CREATE INDEX funcionario_primeiro_nome_ultimo_nome_idx
+on funcionario (ultimo_nome, primeiro_nome);
+
+CREATE INDEX acompanhante_primeiro_nome_ultimo_nome_idx
+ON acompanhante (ultimo_nome, primeiro_nome);
+
+CREATE INDEX hotel_nome_idx
+ON hotel (nome);
