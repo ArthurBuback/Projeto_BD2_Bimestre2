@@ -511,11 +511,11 @@ BEGIN
     END IF;
 END;
 
-CREATE TRIGGER relacionamento_trg BEFORE INSERT ON acompanhante
+CREATE TRIGGER acompanhante_relacionamento_trg BEFORE INSERT ON acompanhante
 FOR EACH ROW
 BEGIN
     DECLARE msg VARCHAR(200);
-    IF NEW.relacionamento <> 'Filho(a)' AND NEW.sexo <> 'Cônjuge' THEN
+    IF NEW.relacionamento <> 'Filho(a)' AND NEW.relacionamento <> 'Cônjuge' THEN
         SET msg = 'O relacionamente deve ser apenas Filho(a) ou Cônjuge';
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
     END IF;
@@ -531,18 +531,174 @@ BEGIN
     END IF;
 END;
 
-CREATE TRIGGER data_nascimento_trg BEFORE INSERT ON acompanhante
+CREATE TRIGGER acompanhante_data_nascimento_trg BEFORE INSERT ON acompanhante
 FOR EACH ROW
 BEGIN
     DECLARE msg VARCHAR(200);
-    IF NEW.data_nascimento < '1960-01-01' AND NEW.data_nascimento > '2023-07-01' THEN
-        SET msg = 'Preencha com uma datá válida (entre 1960-01-01 e 2024-01-01';
+    IF NEW.data_nascimento < '1960-01-01' OR NEW.data_nascimento > '2023-07-01' THEN
+        SET msg = 'Preencha com uma datá válida (entre 1960-01-01 e 2024-01-01)';
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
     END IF;
 END;
 
 
+-- -----------------------------------------------------
+-- Triggers para `cliente`
+-- -----------------------------------------------------
+CREATE TRIGGER cliente_cpf_trg BEFORE INSERT ON cliente
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.cpf < 0 OR NEW.cpf > 99999999999 THEN
+        SET msg = 'Insira um cpf de 11 dígitos';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
 
 
+CREATE TRIGGER cliente_sexo_trg BEFORE INSERT ON cliente
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.sexo <> 'F' AND NEW.sexo <> 'M' THEN
+        SET msg = 'O sexo deve ser apenas masculino (M) ou feminino (F).';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
 
 
+-- -----------------------------------------------------
+-- Triggers para `dependente`
+-- -----------------------------------------------------
+CREATE TRIGGER dependente_cpf_trg BEFORE INSERT ON dependentes
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.cpf < 0 OR NEW.cpf > 99999999999 THEN
+        SET msg = 'Insira um cpf de 11 dígitos';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+CREATE TRIGGER dependente_funcionario_cpf_trg BEFORE INSERT ON dependentes
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.funcionario_cpf < 0 OR NEW.funcionario_cpf > 99999999999 THEN
+        SET msg = 'Insira um cpf de 11 dígitos';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+CREATE TRIGGER dependente_relacionamento_trg BEFORE INSERT ON dependentes
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.parentesco <> 'Filho(a)' AND NEW.parentesco <> 'Cônjuge' THEN
+        SET msg = 'O relacionamente deve ser apenas Filho(a) ou Cônjuge';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+CREATE TRIGGER dependente_sexo_trg BEFORE INSERT ON dependentes
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.sexo <> 'F' AND NEW.sexo <> 'M' THEN
+        SET msg = 'O sexo deve ser apenas masculino (M) ou feminino (F).';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+-- -----------------------------------------------------
+-- Triggers para `funcionario`
+-- -----------------------------------------------------
+CREATE TRIGGER funcionario_cpf_trg BEFORE INSERT ON funcionario
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.cpf < 0 OR NEW.cpf > 99999999999 THEN
+        SET msg = 'Insira um cpf de 11 dígitos';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+CREATE TRIGGER funcionario_data_nascimento_trg BEFORE INSERT ON funcionario
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.data_nascimento < '1960-01-01' OR NEW.data_nascimento > '2023-07-01' THEN
+        SET msg = 'Preencha com uma datá válida (entre 1960-01-01 e 2024-01-01)';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+CREATE TRIGGER funcionario_sexo_trg BEFORE INSERT ON funcionario
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.sexo <> 'F' AND NEW.sexo <> 'M' THEN
+        SET msg = 'O sexo deve ser apenas masculino (M) ou feminino (F).';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+-- -----------------------------------------------------
+-- Triggers para `quarto`
+-- -----------------------------------------------------
+CREATE TRIGGER quarto_disponibilidade_trg BEFORE INSERT ON quarto
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.disponibilidade <> 'S' AND NEW.disponibilidade <> 'N' THEN
+        SET msg = 'A disponibilidade deve ser apenas Sim (S) ou Não (N).';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+-- -----------------------------------------------------
+-- Triggers para `reserva`
+-- -----------------------------------------------------
+CREATE TRIGGER reserva_dia_reserva_trg BEFORE INSERT ON reserva
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.dia_reserva < '2022-01-01' OR NEW.dia_reserva > '2023-01-01' THEN
+        SET msg = 'Preencha com uma datá válida (entre 2022-01-01 e 2023-01-01)';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+CREATE TRIGGER reserva_dia_entrada_trg BEFORE INSERT ON reserva
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.dia_entrada < '2022-01-01' OR NEW.dia_entrada > '2023-01-01' THEN
+        SET msg = 'Preencha com uma datá válida (entre 2022-01-01 e 2023-01-01)';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+CREATE TRIGGER reserva_dia_saida_trg BEFORE INSERT ON reserva
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.dia_saida < '2022-01-01' OR NEW.dia_saida > '2023-01-01' THEN
+        SET msg = 'Preencha com uma datá válida (entre 2022-01-01 e 2023-01-01)';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+CREATE TRIGGER reserva_cliente_cpf_trg BEFORE INSERT ON reserva
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(200);
+    IF NEW.cliente_cpf < 0 OR NEW.cliente_cpf > 99999999999 THEN
+        SET msg = 'Insira um cpf de 11 dígitos';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END;
+
+-- -----------------------------------------------------
+-- Triggers para `valor`
+-- -----------------------------------------------------
