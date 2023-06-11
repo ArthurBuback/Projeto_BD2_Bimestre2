@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `reserva` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `dia_reserva` DATE NULL,
   `dia_entrada` DATE NOT NULL,
-  `dia_saída` DATE NOT NULL,
+  `dia_saida` DATE NOT NULL,
   `cliente_cpf` BIGINT(11) NOT NULL,
   `valor_id` INT NOT NULL,
   `quarto_numero_quarto` INT NOT NULL,
@@ -207,12 +207,6 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
-
-
-
-
 
 
 
@@ -374,7 +368,7 @@ VALUES
 -- -----------------------------------------------------
 -- Insert `reserva`
 -- -----------------------------------------------------
-INSERT INTO `reserva` (`dia_reserva`,`dia_entrada`,`dia_saída`,`cliente_cpf`,`valor_id`,`quarto_numero_quarto`,`quarto_hotel_id`)
+INSERT INTO `reserva` (`dia_reserva`,`dia_entrada`,`dia_saida`,`cliente_cpf`,`valor_id`,`quarto_numero_quarto`,`quarto_hotel_id`)
 VALUES
   ("2022-04-04","2022-06-06","2022-06-08",08558537003,4,32,3),
   ("2022-05-24","2022-05-30","2022-06-04",14349631011,5,11,2),
@@ -416,3 +410,36 @@ VALUES
   (63798194017,15390964080,"Kevyn","Silva","Cônjuge","F","1991-01-28"),
   (22268554082,07626868048,"Heather","Mcdonald","Cônjuge","F","1996-11-02"),
   (43122361000,07626868048,"Adam","Robinson","Filho(a)","M","1989-03-01");
+
+
+
+
+
+-- -----------------------------------------------------
+-- QUESTÃO 3
+-- -----------------------------------------------------
+/*Todos os quartos disponíveis*/
+select hotel.nome, quarto.numero_quarto AS 'Número do Quarto'
+from hotel INNER JOIN quarto
+ON hotel.id = quarto.hotel_id AND quarto.disponibilidade = "S"
+
+/*Quantidade de dias permanecidos por cada cliente*/
+SELECT CONCAT(C.primeiro_nome, ' ', C.ultimo_nome) 'Nome do Cliente', R.id As 'Id da Reserva',
+	DATEDIFF(R.dia_saida, R.dia_entrada) AS 'Quantidade de dias permanecidos'
+FROM cliente C INNER JOIN reserva R
+On C.cpf = R.cliente_cpf
+
+/*Quantidade de dias permanecidos por cada cliente separados por hoteis*/
+SELECT CONCAT(C.primeiro_nome, ' ', C.ultimo_nome) 'Nome do Cliente', H.nome as 'Nome do Hotel', 
+	DATEDIFF(R.dia_saida, R.dia_entrada) 'Dias Permanecidos'
+FROM hotel H INNER JOIN quarto Q INNER JOIN reserva R INNER JOIN cliente C
+ON H.id = Q.hotel_id AND Q.numero_quarto = R.quarto_numero_quarto 
+and Q.hotel_id = R.quarto_hotel_id AND C.cpf = R.cliente_cpf
+
+/*O nome de todos os Acompanhantes dos Clientes e seus respectivos graus de Parentesco, ordenados por ordem alfabetica dos clientes*/
+SELECT CONCAT(C.primeiro_nome, ' ', C.ultimo_nome) 'Nome do Cliente', 
+	CONCAT(A.primeiro_nome, ' ', A.ultimo_nome) 'Nome do Acompanhante',
+	A.relacionamento AS 'Parentesco'
+FROM cliente C INNER JOIN acompanhante A
+ON C.cpf = A.cliente_cpf
+ORDER BY C.primeiro_nome
