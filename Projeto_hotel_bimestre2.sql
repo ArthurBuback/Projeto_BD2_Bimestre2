@@ -449,3 +449,25 @@ SELECT CONCAT(C.primeiro_nome, ' ', C.ultimo_nome) 'Nome do Cliente',
 FROM cliente C INNER JOIN acompanhante A
 ON C.cpf = A.cliente_cpf
 ORDER BY C.primeiro_nome
+
+
+
+
+
+-- -----------------------------------------------------
+-- QUESTÃO 4
+-- -----------------------------------------------------
+/*Todas essas indexações são utilizadas para facilitar a realização de consultas, tornando mais facil a pesquisa de nomes 
+	respectivamentes dos clientes, dependentes, funcionarios e acompanhantes.*/
+
+CREATE INDEX cliente_primeiro_nome_ultimo_nome_idx
+ON cliente (ultimo_nome, primeiro_nome);
+
+CREATE INDEX dependentes_primeiro_nome_ultimo_nome_idx
+ON dependentes (ultimo_nome, primeiro_nome);
+
+CREATE INDEX funcionario_primeiro_nome_ultimo_nome_idx
+on funcionario (ultimo_nome, primeiro_nome);
+
+CREATE INDEX acompanhante_primeiro_nome_ultimo_nome_idx
+ON acompanhante (ultimo_nome, primeiro_nome);
