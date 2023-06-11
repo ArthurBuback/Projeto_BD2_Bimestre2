@@ -702,3 +702,13 @@ END;
 -- -----------------------------------------------------
 -- Triggers para `valor`
 -- -----------------------------------------------------
+CREATE TRIGGER valor_calculo_trg BEFORE INSERT ON `valor`
+FOR EACH ROW
+BEGIN
+  DECLARE tempo_estadia INT;
+  SELECT DATEDIFF(reserva.dia_saida, reserva.dia_entrada) INTO tempo_estadia 
+  	FROM reserva WHERE id = NEW.id;
+  
+  SET NEW.calculo = NEW.valor_diaria * tempo_estadia + 
+  	NEW.serviço_de_quarto + NEW.consumiveis;
+END;
