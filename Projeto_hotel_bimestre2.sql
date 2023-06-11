@@ -435,3 +435,11 @@ SELECT CONCAT(C.primeiro_nome, ' ', C.ultimo_nome) 'Nome do Cliente', H.nome as 
 FROM hotel H INNER JOIN quarto Q INNER JOIN reserva R INNER JOIN cliente C
 ON H.id = Q.hotel_id AND Q.numero_quarto = R.quarto_numero_quarto 
 and Q.hotel_id = R.quarto_hotel_id AND C.cpf = R.cliente_cpf
+
+/*O nome de todos os Acompanhantes dos Clientes e seus respectivos graus de Parentesco, ordenados por ordem alfabetica dos clientes*/
+SELECT CONCAT(C.primeiro_nome, ' ', C.ultimo_nome) 'Nome do Cliente', 
+	CONCAT(A.primeiro_nome, ' ', A.ultimo_nome) 'Nome do Acompanhante',
+	A.relacionamento AS 'Parentesco'
+FROM cliente C INNER JOIN acompanhante A
+ON C.cpf = A.cliente_cpf
+ORDER BY C.primeiro_nome
