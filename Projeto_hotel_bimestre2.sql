@@ -212,12 +212,6 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 
-
-
-
-
-
-
 -- -----------------------------------------------------
 -- QUESTÃO 2
 -- -----------------------------------------------------
@@ -416,3 +410,28 @@ VALUES
   (63798194017,15390964080,"Kevyn","Silva","Cônjuge","F","1991-01-28"),
   (22268554082,07626868048,"Heather","Mcdonald","Cônjuge","F","1996-11-02"),
   (43122361000,07626868048,"Adam","Robinson","Filho(a)","M","1989-03-01");
+
+
+
+
+
+-- -----------------------------------------------------
+-- QUESTÃO 3
+-- -----------------------------------------------------
+/*Todos os quartos disponíveis*/
+select hotel.nome, quarto.numero_quarto AS 'Número do Quarto'
+from hotel INNER JOIN quarto
+ON hotel.id = quarto.hotel_id AND quarto.disponibilidade = "S"
+
+/*Quantidade de dias permanecidos por cada cliente*/
+SELECT CONCAT(C.primeiro_nome, ' ', C.ultimo_nome) 'Nome do Cliente', R.id As 'Id da Reserva',
+	DATEDIFF(R.dia_saida, R.dia_entrada) AS 'Quantidade de dias permanecidos'
+FROM cliente C INNER JOIN reserva R
+On C.cpf = R.cliente_cpf
+
+/*Quantidade de dias permanecidos por cada cliente separados por hoteis*/
+SELECT CONCAT(C.primeiro_nome, ' ', C.ultimo_nome) 'Nome do Cliente', H.nome as 'Nome do Hotel', 
+	DATEDIFF(R.dia_saida, R.dia_entrada) 'Dias Permanecidos'
+FROM hotel H INNER JOIN quarto Q INNER JOIN reserva R INNER JOIN cliente C
+ON H.id = Q.hotel_id AND Q.numero_quarto = R.quarto_numero_quarto 
+and Q.hotel_id = R.quarto_hotel_id AND C.cpf = R.cliente_cpf
